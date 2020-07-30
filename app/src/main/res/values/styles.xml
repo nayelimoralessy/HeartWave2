@@ -1,0 +1,17 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#F3F3F3</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent = "@android:style/TextAppearance">
+        <!-- Customize your theme here. -->
+        <item name="android:textSize">45dp</item>
+        <item name= "android:textStyle">bold</item>
+        <item name="android:textColor">@color/title_color</item>
+        <item name="android:fontFamily">cursive</item>
+    </style>
+
+</resources>
