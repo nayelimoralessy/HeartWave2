@@ -15,7 +15,6 @@ import android.widget.Toast;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
-    private static int SPLASH_TIME_OUT = 4000;
     private BluetoothAdapter ba;
     private Set<BluetoothAdapter> pairedDevice;
     private Set<BluetoothDevice>pairedDevices;
@@ -26,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mBtn = findViewById(R.id.buttonbt);
         mBlue = findViewById(R.id.bt);
         mNoblue = findViewById(R.id.nobt);
@@ -34,16 +34,6 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(turnOn, 0);
         pairedDevices = ba.getBondedDevices();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) { //since requires newer versions
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent homeIntent = new Intent(MainActivity.this, Home.class);
-                    startActivity(homeIntent);
-                    finish();
-                }
-            }, SPLASH_TIME_OUT);
-        }
         if (ba.isEnabled()) {
             //mBlue.setImageResource();
             mBtn.setImageResource(R.drawable.blue);
