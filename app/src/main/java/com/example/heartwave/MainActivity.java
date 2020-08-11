@@ -7,51 +7,57 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 0;
-    private static final int REQUEST_DISCOVER_BT = 1;
     private BluetoothAdapter ba;
-    FloatingActionButton mactBT;
+    FloatingActionButton mBtn;
+    ListView mPairedList;
+    ArrayAdapter mAdapter;
+    List list = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //mBtn = findViewById(R.id.buttonbt);
-        mactBT = findViewById(R.id.actBT);
-        //mBlue = findViewById(R.id.bt);
-        //mNoblue = findViewById(R.id.nobt);
+        mBtn = findViewById(R.id.actBT);
+        mPairedList = findViewById(R.id.pairedList);
+
         ba = BluetoothAdapter.getDefaultAdapter();
 
-       // pairedDevices = ba.getBondedDevices();
-
         if (ba.isEnabled()) {
-            //mBlue.setImageResource();
-            mactBT.setImageResource(R.drawable.blue);
-        } else {
-            mactBT.setImageResource(R.drawable.noblue);
-            //mNoblue.setImageResource(R.drawable.noblue);
+            mBtn.setImageResource(R.drawable.blue);
+            Set<BluetoothDevice> devices = ba.getBondedDevices();
+            for (BluetoothDevice device : devices) {
+                list.add(device.getName()); //+ "," + device);
+            }
+            mAdapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, list);
+            mPairedList.setAdapter(mAdapter);
+        }
+        else {
+            mBtn.setImageResource(R.drawable.noblue);
         }
 
         // On Btn click
-        mactBT.setOnClickListener(new View.OnClickListener() {
+        mBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!ba.isEnabled()) {
                     showToast("Turning on bluetooth...");
                     Intent turnOn = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                     startActivityForResult(turnOn, 0);
-                } else {
+                }
+                else {
                     showToast("Bluetooth is already on");
                 }
             }
@@ -63,10 +69,11 @@ public class MainActivity extends AppCompatActivity {
             case REQUEST_ENABLE_BT:
                 if (resultCode == RESULT_OK) {
                     // Bluetooth is on
-                    mactBT.setImageResource(R.drawable.blue);
+                    mBtn.setImageResource(R.drawable.blue);
                     showToast("Bluetooth is on");
                 } else {
                     // User denied to turn on bluetooth
+                    mBtn.setImageResource(R.drawable.noblue);
                     showToast("Couldn't turn on bluetooth");
                 }
         }
