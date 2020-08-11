@@ -39,34 +39,63 @@
         app:srcCompat="@drawable/blue"
         tools:ignore="VectorDrawableCompat"
         android:focusable="true" />
-    <TextView
-        android:id="@+id/textview"
-        android:layout_width="304dp"
-        android:layout_height="55dp"
-        android:background="#FFFFFF"
-        android:fontFamily="serif-monospace"
-        android:text="Paired Devices"
-        android:textColor="#000000"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
-        app:layout_constraintVertical_bias="1.0" />
 
-    <ListView
-        android:id="@+id/pairedList"
+    <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="524dp"
-        android:scrollbarSize="8dp"
-        android:scrollbars="vertical"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview"
-        tools:listitem="@layout/support_simple_spinner_dropdown_item" >
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
+        app:layout_constraintVertical_bias="0.0">
 
+        <Button
+            android:id="@+id/pairBtn"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="341dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="30dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:fontFamily="@font/marko_one"
+            android:text="Paired Devices"
+            android:textColor="#FFFFFF"
+            android:textSize="30dp" />
 
-    </ListView>
+        <Button
+            android:id="@+id/realSig"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="341dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:fontFamily="@font/marko_one"
+            android:text="Real-Time Signals"
+            android:textColor="#FFFFFF"
+            android:textSize="30dp" />
+
+        <Button
+            android:id="@+id/recs"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="341dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:fontFamily="@font/marko_one"
+            android:text="Records"
+            android:textColor="#FFFFFF"
+            android:textSize="30dp" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

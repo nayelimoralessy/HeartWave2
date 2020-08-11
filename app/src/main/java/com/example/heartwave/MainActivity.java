@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
     ListView mPairedList;
     ArrayAdapter mAdapter;
     List list = new ArrayList();
-    Dialog prompt;
-    Button mOK;
+    Dialog popup;
+    Button mOK, mPairedBtn;
     ImageView mIcon;
     TextView mMsg;
 
@@ -42,20 +42,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mBtn = findViewById(R.id.actBT);
-        mPairedList = findViewById(R.id.pairedList);
+        mPairedBtn = findViewById(R.id.pairBtn);
 
-        prompt = new Dialog(this);
+        popup = new Dialog(this);
         msgPrompt();
         ba = BluetoothAdapter.getDefaultAdapter();
 
         if (ba.isEnabled()) {
             mBtn.setImageResource(R.drawable.blue);
-            Set<BluetoothDevice> devices = ba.getBondedDevices();
-            for (BluetoothDevice device : devices) {
-                list.add(device.getName()); //+ "," + device);
-            }
-            mAdapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, list);
-            mPairedList.setAdapter(mAdapter);
+            //pairingDev();
         }
         else {
             mBtn.setImageResource(R.drawable.noblue);
@@ -74,22 +69,53 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        mPairedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ba.isEnabled()) {
+                    pairingDev();
+                }
+                else {
+                    showToast("Bluetooth has to be enabled");
+                }
+            }
+        });
     }
     public void msgPrompt(){
-        prompt.setContentView(R.layout.popup_msg);
-        mOK = findViewById(R.id.okBtn);
-        mMsg = prompt.findViewById(R.id.msg);
-        mIcon = prompt.findViewById(R.id.icon);
-        mOK = prompt.findViewById(R.id.okBtn);
-        prompt.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popup.setContentView(R.layout.popup_msg);
+        mMsg = popup.findViewById(R.id.msg);
+        mIcon = popup.findViewById(R.id.icon);
+        mOK = popup.findViewById(R.id.okBtn);
+        popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
         mOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                prompt.dismiss();
+                popup.dismiss();
             }
         });
+        popup.show();
+    }
+    public void pairingDev(){
+        popup.setContentView(R.layout.pair_device);
+        mPairedList = popup.findViewById(R.id.pairedList);
+        popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        prompt.show();
+        Set<BluetoothDevice> devices = ba.getBondedDevices();
+        for (BluetoothDevice device : devices) {
+            list.add(device.getName()); //+ "," + device);
+        }
+        mAdapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, list);
+        mPairedList.setAdapter(mAdapter);
+//      CHANGE THIS TO IF A DEVICE IS PICKED THEN ALLOW ACCESS TO WAVEFORMS
+//        mPairedList.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                popup.dismiss();
+//            }
+//        });
+        popup.show();
     }
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         switch (requestCode) {
@@ -98,12 +124,7 @@ public class MainActivity extends AppCompatActivity {
                     // Bluetooth is on
                     mBtn.setImageResource(R.drawable.blue);
                     showToast("Bluetooth is on");
-                    Set<BluetoothDevice> devices = ba.getBondedDevices();
-                    for (BluetoothDevice device : devices) {
-                        list.add(device.getName()); //+ "," + device);
-                    }
-                    mAdapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, list);
-                    mPairedList.setAdapter(mAdapter);
+                    //pairingDev();
                 } else {
                     // User denied to turn on bluetooth
                     mBtn.setImageResource(R.drawable.noblue);
