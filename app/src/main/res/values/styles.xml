@@ -6,7 +6,7 @@
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <style name="TextAppearance" parent = "@android:style/TextAppearance">
+    <style name="SPLASH" parent = "@android:style/TextAppearance">
         <!-- Customize your theme here. -->
         <item name="android:textSize">45dp</item>
         <item name= "android:textStyle">bold</item>

@@ -39,20 +39,31 @@
         app:srcCompat="@drawable/blue"
         tools:ignore="VectorDrawableCompat"
         android:focusable="true" />
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="304dp"
+        android:layout_height="55dp"
+        android:background="#FFFFFF"
+        android:fontFamily="serif-monospace"
+        android:text="Paired Devices"
+        android:textColor="#000000"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ListView
         android:id="@+id/pairedList"
-        android:layout_width="match_parent"
-        android:layout_height="657dp"
-        android:background="@color/colorPrimary"
+        android:layout_width="0dp"
+        android:layout_height="524dp"
         android:scrollbarSize="8dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
-        app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/support_simple_spinner_dropdown_item"/>
-
+        app:layout_constraintTop_toBottomOf="@id/textview"
+        tools:listitem="@layout/support_simple_spinner_dropdown_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

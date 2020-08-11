@@ -23,7 +23,7 @@
         android:layout_height="93sp"
         android:fontFamily="cursive"
         android:text="HeartWave"
-        android:textAppearance="@style/TextAppearance"
+        android:textAppearance="@style/SPLASH"
         android:textSize="80sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
