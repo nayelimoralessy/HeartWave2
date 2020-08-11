@@ -70,6 +70,12 @@ public class MainActivity extends AppCompatActivity {
                     // Bluetooth is on
                     mBtn.setImageResource(R.drawable.blue);
                     showToast("Bluetooth is on");
+                    Set<BluetoothDevice> devices = ba.getBondedDevices();
+                    for (BluetoothDevice device : devices) {
+                        list.add(device.getName()); //+ "," + device);
+                    }
+                    mAdapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, list);
+                    mPairedList.setAdapter(mAdapter);
                 } else {
                     // User denied to turn on bluetooth
                     mBtn.setImageResource(R.drawable.noblue);
