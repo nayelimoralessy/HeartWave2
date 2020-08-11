@@ -2,13 +2,20 @@ package com.example.heartwave;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -24,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     ListView mPairedList;
     ArrayAdapter mAdapter;
     List list = new ArrayList();
+    Dialog prompt;
+    Button mOK;
+    ImageView mIcon;
+    TextView mMsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         mBtn = findViewById(R.id.actBT);
         mPairedList = findViewById(R.id.pairedList);
 
+        prompt = new Dialog(this);
+        msgPrompt();
         ba = BluetoothAdapter.getDefaultAdapter();
 
         if (ba.isEnabled()) {
@@ -62,7 +75,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    public void msgPrompt(){
+        prompt.setContentView(R.layout.popup_msg);
+        mOK = findViewById(R.id.okBtn);
+        mMsg = prompt.findViewById(R.id.msg);
+        mIcon = prompt.findViewById(R.id.icon);
+        mOK = prompt.findViewById(R.id.okBtn);
+        prompt.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        mOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                prompt.dismiss();
+            }
+        });
 
+        prompt.show();
+    }
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         switch (requestCode) {
             case REQUEST_ENABLE_BT:
