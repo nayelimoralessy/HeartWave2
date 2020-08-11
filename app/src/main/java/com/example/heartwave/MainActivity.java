@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
             mBtn.setImageResource(R.drawable.noblue);
         }
 
-        // On Btn click
         mBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
