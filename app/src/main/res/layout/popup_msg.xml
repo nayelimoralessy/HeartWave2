@@ -45,7 +45,7 @@
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="#FFFFFF"
-                android:textSize="23dp"
+                android:textSize="23sp"
                 android:textStyle="bold" />
 
             <Button
@@ -60,7 +60,7 @@
                 android:background="#FFFFFF"
                 android:fontFamily="@font/paytone_one"
                 android:text="OK"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

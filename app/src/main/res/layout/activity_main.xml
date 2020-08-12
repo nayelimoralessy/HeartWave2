@@ -60,7 +60,7 @@
             android:layout_marginBottom="30dp"
             android:layout_weight="1"
             android:background="@drawable/btn_style"
-            android:fontFamily="@font/marko_one"
+            android:fontFamily="sans-serif-medium"
             android:text="Paired Devices"
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
@@ -74,7 +74,7 @@
             android:layout_marginBottom="30dp"
             android:layout_weight="1"
             android:background="@drawable/btn_style"
-            android:fontFamily="@font/marko_one"
+            android:fontFamily="sans-serif-medium"
             android:text="Real-Time Signals"
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
@@ -88,7 +88,7 @@
             android:layout_marginBottom="30dp"
             android:layout_weight="1"
             android:background="@drawable/btn_style"
-            android:fontFamily="@font/marko_one"
+            android:fontFamily="sans-serif-medium"
             android:text="Records"
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
