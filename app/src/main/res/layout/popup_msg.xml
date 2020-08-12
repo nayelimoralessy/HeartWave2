@@ -11,6 +11,7 @@
         android:layout_width="350dp"
         android:layout_height="330dp"
         android:background="#00FFFFFF"
+        android:layout_margin="10dp"
         app:cardBackgroundColor="@color/title_color"
         app:cardCornerRadius="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,6 +23,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:background="#00FFFFFF"
             android:orientation="vertical">
 
@@ -40,12 +42,12 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/russo_one"
+                android:fontFamily="@font/audiowide"
                 android:text="Activate Bluetooth and connect to ECG device"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="#FFFFFF"
-                android:textSize="23sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <Button
