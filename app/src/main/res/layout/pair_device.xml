@@ -7,8 +7,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/popup"
-        android:layout_width="350dp"
-        android:layout_height="500dp"
+        android:layout_width="353dp"
+        android:layout_height="407dp"
         app:cardBackgroundColor="@color/ic_launcher_background"
         app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,14 +20,10 @@
         <ListView
             android:id="@+id/pairedList"
             android:layout_width="320dp"
-            android:layout_height="500dp"
+            android:layout_height="400dp"
             android:layout_gravity="center_horizontal"
             android:scrollbarSize="8dp"
-            android:scrollbars="vertical"
-            app:layout_constraintBottom_toBottomOf="@+id/popup"
-            app:layout_constraintEnd_toEndOf="@+id/popup"
-            app:layout_constraintHorizontal_bias="0.488"
-            app:layout_constraintStart_toStartOf="@+id/popup">
+            android:scrollbars="vertical">
 
         </ListView>
     </androidx.cardview.widget.CardView>

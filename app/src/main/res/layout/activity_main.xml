@@ -10,7 +10,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="90dp"
         android:background="#03A9F4"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,15 +19,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/app_name"
         app:titleMargin="0dp"
-        app:titleMarginStart="50dp"
+        app:titleMarginStart="30dp"
         app:titleTextAppearance="@style/Title" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/actBT"
         android:layout_width="72dp"
         android:layout_height="55dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="36dp"
         android:layout_marginBottom="1dp"
         android:clickable="true"
         android:focusable="true"
@@ -35,63 +35,73 @@
         app:layout_constraintBottom_toBottomOf="@+id/my_toolbar"
         app:layout_constraintEnd_toEndOf="@+id/my_toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.421"
         app:srcCompat="@drawable/blue"
         tools:ignore="VectorDrawableCompat" />
 
-    <LinearLayout
+    <Button
+        android:id="@+id/pairBtn"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="2.5dp"
+        android:layout_weight="1"
+        android:background="@drawable/btn_style"
+        android:drawableTop="@drawable/pair_dev"
+        android:fontFamily="sans-serif-medium"
+        android:text="Paired Devices"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/recs"
+        app:layout_constraintBottom_toTopOf="@+id/realSig"
+        app:layout_constraintEnd_toStartOf="@+id/recs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
+
+    <Button
+        android:id="@+id/realSig"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/btn_style"
+        android:drawableTop="@drawable/signal"
+        android:fontFamily="sans-serif-medium"
+        android:text="Real-Time Signals"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/pairBtn"
-            android:layout_width="341dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="30dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_style"
-            android:fontFamily="sans-serif-medium"
-            android:text="Paired Devices"
-            android:textColor="#FFFFFF"
-            android:textSize="30sp" />
+    <Button
+        android:id="@+id/recs"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="2.5dp"
+        android:layout_weight="1"
+        android:background="@drawable/btn_style"
+        android:drawableTop="@drawable/records"
+        android:fontFamily="sans-serif-medium"
+        android:text="Records"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/pairBtn"
+        app:layout_constraintBottom_toTopOf="@+id/realSig"
+        app:layout_constraintEnd_toEndOf="parent
+"
+        app:layout_constraintStart_toEndOf="@+id/pairBtn"
+        app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
 
-        <Button
-            android:id="@+id/realSig"
-            android:layout_width="341dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_style"
-            android:fontFamily="sans-serif-medium"
-            android:text="Real-Time Signals"
-            android:textColor="#FFFFFF"
-            android:textSize="30sp" />
-
-        <Button
-            android:id="@+id/recs"
-            android:layout_width="341dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_style"
-            android:fontFamily="sans-serif-medium"
-            android:text="Records"
-            android:textColor="#FFFFFF"
-            android:textSize="30sp" />
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
