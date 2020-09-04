@@ -6,11 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,6 +30,7 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 0;
+
     private BluetoothAdapter ba;
     FloatingActionButton mBtn;
     ListView mPairedList;
@@ -35,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     Button mOK, mPairedBtn;
     ImageView mIcon;
     TextView mMsg;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,13 +52,8 @@ public class MainActivity extends AppCompatActivity {
         msgPrompt();
         ba = BluetoothAdapter.getDefaultAdapter();
 
-        if (ba.isEnabled()) {
-            mBtn.setImageResource(R.drawable.blue);
-            //pairingDev();
-        }
-        else {
-            mBtn.setImageResource(R.drawable.noblue);
-        }
+        IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+        registerReceiver(receiver, filter);
 
         mBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        
     }
     public void msgPrompt(){
         popup.setContentView(R.layout.popup_msg);
@@ -117,6 +117,24 @@ public class MainActivity extends AppCompatActivity {
 //        });
         popup.show();
     }
+    private final BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            final String action = intent.getAction();
+            if(action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)){
+                int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
+                switch (state){
+                    case BluetoothAdapter.STATE_OFF:
+                        mBtn.setImageResource(R.drawable.noblue);
+                        break;
+                    case BluetoothAdapter.STATE_ON:
+                        mBtn.setImageResource(R.drawable.blue);
+                        break;
+                }
+            }
+        }
+    };
+
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         switch (requestCode) {
             case REQUEST_ENABLE_BT:
